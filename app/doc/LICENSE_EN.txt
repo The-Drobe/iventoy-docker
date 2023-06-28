@@ -1,0 +1,38 @@
+
+1. Source Code
+
+iVentoy software consists of two parts, server part and client part.
+
+1.1 Server Part
+Server part is all newly developed by the author, this part of the code is not open source, and the copyright belongs to the author.
+
+Server part uses the following library:
+
++-----------+-------------------+
+|   LIB     |  License	        |
++-----------+-------------------+
+| glib2	    |  LGPL	            |
++-----------+-------------------+
+| libiconv	|  LGPL             |
++-----------+-------------------+
+| libwim    |  LGPL	            |
++-----------+-------------------+
+| libevent  |  BSD-3            |
++-----------+-------------------+
+| PCRE	    |  BSD              |
++-----------+-------------------+
+| tomcrypt  | Public Domain     |
++-----------+-------------------+
+| tommath   | Public Domain     |
++-----------+-------------------+
+
+
+1.2 Client Part
+The Client part also consists of two parts, iPXE and other tools.
+iPXE is based on the standard iPXE project, so it's open sourced.
+Other tools are all newly developed by the author, this part of the code is not open source, 
+and the copyright belongs to the author.
+
+All the code that should open sourced will be in the following link:
+https://www.github.com/ventoy/PXE
+

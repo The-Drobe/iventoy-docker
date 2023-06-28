@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+  
+  <report>
+      <errors>
+        <show config:type="boolean">true</show>
+        <timeout config:type="integer">0</timeout>
+        <log config:type="boolean">true</log>
+      </errors>
+      <warnings>
+        <show config:type="boolean">true</show>
+        <timeout config:type="integer">3</timeout>
+        <log config:type="boolean">true</log>
+      </warnings>
+      <messages>
+        <show config:type="boolean">true</show>
+        <timeout config:type="integer">3</timeout>
+        <log config:type="boolean">true</log>
+      </messages>
+      <yesno_messages>
+        <show config:type="boolean">true</show>
+        <timeout config:type="integer">3</timeout>
+        <log config:type="boolean">true</log>
+      </yesno_messages>
+  </report>
+
+  <deploy_image>
+    <image_installation config:type="boolean">false</image_installation>
+  </deploy_image>
+  <firewall>
+    <FW_DEV_DMZ/>
+    <FW_DEV_EXT/>
+    <FW_DEV_INT/>
+    <enable_firewall config:type="boolean">false</enable_firewall>
+    <start_firewall config:type="boolean">false</start_firewall>
+  </firewall>
+  <general>
+    <ask-list config:type="list"/>
+    <mode>
+      <confirm config:type="boolean">false</confirm>
+    </mode>
+    <proposals config:type="list"/>
+    <signature-handling>
+      <accept_file_without_checksum config:type="boolean">true</accept_file_without_checksum>
+      <accept_non_trusted_gpg_key config:type="boolean">true</accept_non_trusted_gpg_key>
+      <accept_unknown_gpg_key config:type="boolean">true</accept_unknown_gpg_key>
+      <accept_unsigned_file config:type="boolean">true</accept_unsigned_file>
+      <accept_verification_failed config:type="boolean">false</accept_verification_failed>
+      <import_gpg_key config:type="boolean">true</import_gpg_key>
+    </signature-handling>
+    <storage>
+      <partition_alignment config:type="symbol">align_optimal</partition_alignment>
+      <start_multipath config:type="boolean">false</start_multipath>
+    </storage>
+  </general>
+  <groups config:type="list">
+    <group>
+      <encrypted config:type="boolean">true</encrypted>
+      <group_password>x</group_password>
+      <groupname>tftp</groupname>
+      <userlist/>
+    </group>
+    <group>
+      <encrypted config:type="boolean">true</encrypted>
+      <group_password>x</group_password>
+      <groupname>bin</groupname>
+      <userlist/>
+    </group>
+  </groups>
+  <host>
+    <hosts config:type="list">
+      <hosts_entry>
+        <host_address>127.0.0.1</host_address>
+        <names config:type="list">
+          <name>localhost</name>
+        </names>
+      </hosts_entry>      
+    </hosts>
+  </host>
+  <keyboard>
+    <keyboard_values>
+      <delay/>
+      <discaps config:type="boolean">false</discaps>
+      <numlock/>
+      <rate/>
+    </keyboard_values>
+    <keymap>english-us</keymap>
+  </keyboard>
+  <language>
+    <language>en_US</language>
+    <languages>en_US</languages>
+  </language>
+  <login_settings>
+    <autologin_user>public</autologin_user>
+    <password_less_login config:type="boolean">true</password_less_login>
+  </login_settings>  
+  <partitioning config:type="list">
+    <drive>      
+      <device>/dev/$$VT_LINUX_DISK_MAX_SIZE$$</device>
+      <initialize config:type="boolean">true</initialize>
+      <partitions config:type="list"/>
+      <pesize/>
+      <type config:type="symbol">CT_DISK</type>
+      <use>all</use>
+    </drive>
+  </partitioning>
+  
+  <services-manager>
+    <default_target>graphical</default_target>
+    <services>
+      <disable config:type="list"/>
+      <enable config:type="list">
+        <service>auditd</service>
+        <service>avahi-daemon</service>
+        <service>bluetooth</service>
+        <service>cron</service>
+        <service>cups</service>
+        <service>dm-event</service>
+        <service>getty@tty1</service>
+        <service>haveged</service>
+        <service>irqbalance</service>
+        <service>iscsi</service>
+        <service>lvm2-lvmetad</service>
+        <service>ModemManager</service>
+        <service>nscd</service>
+        <service>ntpd</service>
+        <service>postfix</service>
+        <service>purge-kernels</service>
+        <service>SuSEfirewall2</service>
+        <service>SuSEfirewall2_init</service>
+        <service>systemd-readahead-collect</service>
+        <service>systemd-readahead-replay</service>
+        <service>wicked</service>
+        <service>wickedd-auto4</service>
+        <service>wickedd-dhcp4</service>
+        <service>wickedd-dhcp6</service>
+        <service>wickedd-nanny</service>
+        <service>wickedd</service>
+        <service>wpa_supplicant</service>
+        <service>YaST2-Firstboot</service>
+        <service>YaST2-Second-Stage</service>
+      </enable>
+    </services>
+  </services-manager>
+  <software>
+    <image/>
+    <patterns config:type="list">
+      <pattern>apparmor_opt</pattern>
+      <pattern>base</pattern>
+      <pattern>enhanced_base_opt</pattern>
+      <pattern>fonts_opt</pattern>
+      <pattern>gnome_basis_opt</pattern>
+      <pattern>lamp_server</pattern>
+      <pattern>sw_management_gnome</pattern>
+      <pattern>x11_opt</pattern>
+      <pattern>x11_yast</pattern>
+      <pattern>sw_management</pattern>
+      <pattern>apparmor</pattern>
+      <pattern>enhanced_base</pattern>
+      <pattern>fonts</pattern>
+      <pattern>gnome_basis</pattern>
+      <pattern>x11</pattern>
+      <pattern>yast2_basis</pattern>
+    </patterns>
+  </software>
+  <sysconfig config:type="list">
+    <sysconfig_entry>
+      <sysconfig_key>TIMEZONE</sysconfig_key>
+      <sysconfig_path>/etc/sysconfig/clock</sysconfig_path>
+      <sysconfig_value/>
+    </sysconfig_entry>
+  </sysconfig>
+  <timezone>
+    <hwclock>UTC</hwclock>
+    <timezone>Asia/Shanghai</timezone>
+  </timezone>
+  <user_defaults>
+    <expire/>
+    <group>100</group>
+    <groups/>
+    <home>/home</home>
+    <inactive>0</inactive>
+    <no_groups config:type="boolean">true</no_groups>
+    <shell>/bin/bash</shell>
+    <skel>/etc/skel</skel>
+    <umask/>
+  </user_defaults>
+  <users config:type="list">
+    <user>
+      <encrypted config:type="boolean">false</encrypted>
+      <fullname>public</fullname>
+      <gid>0</gid>
+      <home>/home/public</home>
+      <password_settings>
+        <expire/>
+        <flag/>
+        <inact>-1</inact>
+        <max>99999</max>
+        <min>0</min>
+        <warn>7</warn>
+      </password_settings>
+      <shell>/bin/bash</shell>
+      <uid>1000</uid>
+      <user_password>123456</user_password>
+      <username>public</username>
+    </user>
+    <user>
+      <encrypted config:type="boolean">false</encrypted>
+      <password_settings>
+        <inact>-1</inact>
+        <max>-1</max>
+        <min>-1</min>
+        <warn>-1</warn>
+      </password_settings>
+      <user_password>123456</user_password>
+      <username>root</username>
+    </user>
+  </users>
+</profile>
