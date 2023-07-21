@@ -1,0 +1,12 @@
+curl --output out --location --remote-header-name https://github.com/ventoy/PXE/releases/latest/download/iventoy-1.0.16-linux-free.tar.gz
+
+Version=$(curl -L --stderr -  --location --remote-header-name https://github.com/ventoy/PXE/releases/latest | grep -o -E '"/ventoy/PXE/releases/tag/[^"]+"')
+Replace="/ventoy/PXE/releases/tag/"
+Version=$(echo "$Version" | sed "s|$Replace||g")
+Version="${Version%%$'\n'*}"
+Version=$(echo "$Version" | sed "s|"v"||g")
+Version=$(echo "$Version" | sed 's|"||g')
+echo $Version
+DownloadLink="https://github.com/ventoy/PXE/releases/latest/download/iventoy-"$Version"-linux-free.tar.gz"
+echo $DownloadLink
+curl --output iventoy.tar.gz --location --remote-header-name "https://github.com/ventoy/PXE/releases/latest/download/iventoy-"$Version"-linux-free.tar.gz"
