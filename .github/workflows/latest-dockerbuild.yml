@@ -1,0 +1,42 @@
+name: Docker Build/Publish Image on latest
+
+# https://medium.com/swlh/using-github-actions-to-build-arm-based-docker-images-413a8d498ee
+# https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
+on:
+  push:    
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:   
+  build:    
+    runs-on: ubuntu-latest   
+    env:      
+      DOCKER_REGISTRY: docker.io     
+      DOCKER_IMAGE: thedrobe/iventoy-docker
+      DOCKER_USERNAME: thedrobe
+      DOCKER_PASSWORD: ${{ secrets.DOCKERPW }}  
+      DOCKER_TARGET_PLATFORM: linux/arm/v7,linux/arm64/v8,linux/amd64
+
+    steps:    
+      - name: Checkout the code       
+        uses: actions/checkout@v1              
+      - name: Set up Docker Buildx      
+        uses: crazy-max/ghaction-docker-buildx@v1      
+        with:        
+          version: latest       
+      - name: Prepare      
+        if: success()      
+        id: prepare      
+        run: |        
+          echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}        
+          echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}        
+          echo ::set-output name=version::latest   
+      - name: Docker Login      
+        if: success()      
+        run: |        
+          echo "${DOCKER_PASSWORD}" | docker login ${DOCKER_REGISTRY} --username "${DOCKER_USERNAME}" --password-stdin              
+      - name: Run Buildx (push image)      
+        if: success()      
+        run: |        
+          docker buildx build --platform ${{ steps.prepare.outputs.docker_platform }} --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} --file ./Dockerfile --output type=image,push=true .
