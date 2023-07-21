@@ -4,9 +4,9 @@ name: Docker Build/Publish Image on Develop
 # https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
 on:
   push:    
-    branches: [ main ]
+    branches: [ Develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ Develop ]
   workflow_dispatch:
 jobs:   
   build:    
