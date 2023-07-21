@@ -1,4 +1,4 @@
-name: Docker Build/Publish Image on latest
+name: Docker Build/Publish Image on Develop
 
 # https://medium.com/swlh/using-github-actions-to-build-arm-based-docker-images-413a8d498ee
 # https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
@@ -31,7 +31,7 @@ jobs:
         run: |        
           echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}        
           echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}        
-          echo ::set-output name=version::latest   
+          echo ::set-output name=version::Develop   
       - name: Docker Login      
         if: success()      
         run: |        
