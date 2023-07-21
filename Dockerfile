@@ -19,7 +19,10 @@ RUN Version=$(curl -L --stderr -  --location --remote-header-name https://github
     echo $DownloadLink && \
     curl --output iventoy.tar.gz --location --remote-header-name "https://github.com/ventoy/PXE/releases/latest/download/iventoy-"$Version"-linux-free.tar.gz" && \
     tar -xvf iventoy.tar.gz && \
-    rm -rf iventoy.tar.gz
+    rm -rf iventoy.tar.gz && \
+    cp -R -v ./iventoy-$Version/* /app && \
+    rm -rf ./iventoy-$Version/
+    
 
 
 CMD ["/bin/bash", "-c", "cd /app && bash iventoy.sh start && sleep infinity"]
