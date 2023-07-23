@@ -1,12 +1,10 @@
 version: "3"
 services:
   ventoy: 
-    build: .
+    image: thedrobe/iventoy-docker
     network_mode: "host"
     restart: unless-stopped
     privileged: true
-    #flask requires SIGINT to stop gracefully
-    # (default stop signal from Compose is SIGTERM)
     stop_signal: SIGINT
     volumes:
      - ./iso:/app/iso
